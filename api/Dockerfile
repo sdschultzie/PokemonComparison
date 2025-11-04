@@ -25,6 +25,7 @@ RUN curl -1sLf 'https://dl.cloudsmith.io/public/task/task/setup.deb.sh' | bash &
 EXPOSE 1111
 CMD ["/bin/bash"]
 
+
 # --------------------------------------
 # Builder stage
 # --------------------------------------
@@ -36,6 +37,7 @@ COPY . .
 
 # Build application
 RUN go build -o ./bin/main main.go
+
 
 # --------------------------------------
 # Prod stage

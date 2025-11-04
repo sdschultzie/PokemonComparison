@@ -25,3 +25,40 @@ EXPOSE 5173
 
 # Default command just keeps container alive for dev
 CMD ["/bin/bash"]
+
+
+# --------------------------------------
+# Build stage (for production)
+# --------------------------------------
+FROM dev AS builder
+WORKDIR /app
+
+# Copy source code
+COPY . .
+
+RUN cd pokemon-comparison
+
+# Copy package metadata first for dependency caching
+COPY package*.json ./
+RUN npm clean install
+
+# Build the React/Vite app for production
+RUN npm run build
+
+
+# --------------------------------------
+# Run stage (serve static build)
+# --------------------------------------
+FROM nginx:1.27-alpine AS run
+
+# Copy the production build from the build stage
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Optional: add a custom nginx config (if you need API proxying or routing)
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80 for serving the app
+EXPOSE 80
+
+# Run nginx in the foreground
+CMD ["nginx", "-g", "daemon off;"]
