@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+</head>
+
+<body style="font-family: sans-serif; text-align: center; margin-top: 20%;">
+    <h1>Hello, World!</h1>
+    <p>This simple HTML page is served from inside a Docker container on port 1112.</p>
+
+    <div id="api-result">Loading API response...</div>
+
+    <script>
+        // Make a request to the /api/hello endpoint
+        fetch("/api/hello")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("api-result").textContent = `API says: ${data.message}`;
+            })
+            .catch(error => {
+                document.getElementById("api-result").textContent = `Error fetching API: ${error}`;
+            });
+    </script>
+</body>
+
+</html>

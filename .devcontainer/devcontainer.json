@@ -1,0 +1,20 @@
+{
+    "name": "Go API DevContainer",
+    "build": {
+        "dockerfile": "../api/Dockerfile",
+        "context": "..",
+        "target": "dev"
+    },
+    "forwardPorts": [
+        1111
+    ],
+    "workspaceFolder": "/workspaces",
+    "remoteUser": "root",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.go"
+            ]
+        }
+    }
+}
