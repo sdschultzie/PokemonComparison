@@ -1,13 +1,27 @@
-# TODO: REPLACE WITH REACT CONTAINER
-# Use a lightweight web server base image
-FROM nginx:alpine
+# --------------------------------------
+# Base development image
+# --------------------------------------
+FROM node:25 AS dev
 
-# Copy our HTML file into the nginx served directory
-COPY index.html /usr/share/nginx/html/index.html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# VS Code mounts source code to /workspaces by default when opening in devcontainer
+WORKDIR /workspaces
 
-# Expose port 1111 inside the container
-EXPOSE 1112
+# Install common dev tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        bash \
+        coreutils \
+        curl \
+        git \
+        make \
+        netcat-traditional \
+        vim \
+    && rm -rf /var/lib/apt/lists/*
 
-# Start nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Install Task (easier make)
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/task/task/setup.deb.sh' | bash && apt install task
+
+# Expose the vite dev server port in development
+EXPOSE 5173
+
+# Default command just keeps container alive for dev
+CMD ["/bin/bash"]
