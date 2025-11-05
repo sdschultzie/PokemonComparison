@@ -1,0 +1,19 @@
+{
+    "name": "Golang API DevContainer",
+    "dockerComposeFile": [
+        "../../docker-compose-dev.yml"
+    ],
+    "service": "api",
+    "forwardPorts": [
+        1111
+    ],
+    "workspaceFolder": "/workspace/api",
+    "remoteUser": "root",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.go"
+            ]
+        }
+    }
+}

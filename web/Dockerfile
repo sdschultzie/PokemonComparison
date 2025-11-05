@@ -21,10 +21,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/task/task/setup.deb.sh' | bash && apt install task
 
 # Expose the vite dev server port in development
-EXPOSE 5173
+EXPOSE 1112
 
 # Default command just keeps container alive for dev
-CMD ["/bin/bash"]
+CMD ["sleep", "infinity"]
 
 
 # --------------------------------------

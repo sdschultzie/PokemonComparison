@@ -4,7 +4,7 @@
 FROM golang:1.25 AS dev
 
 # VS Code mounts source code to /workspaces by default when opening in devcontainer
-WORKDIR /workspaces
+# WORKDIR /workspaces
 
 # Install common dev tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -23,7 +23,7 @@ RUN curl -1sLf 'https://dl.cloudsmith.io/public/task/task/setup.deb.sh' | bash &
 
 # Default command just keeps container alive for dev
 EXPOSE 1111
-CMD ["/bin/bash"]
+CMD ["sleep", "infinity"]
 
 
 # --------------------------------------
@@ -42,7 +42,7 @@ RUN go build -o ./bin/main main.go
 # --------------------------------------
 # Prod stage
 # --------------------------------------
-FROM debian:bookworm-slim AS prod
+FROM debian:bookworm-slim AS run
 WORKDIR /app
 
 # Copy over the binary from the builder stage

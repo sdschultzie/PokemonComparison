@@ -1,0 +1,25 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      target: dev
+    # Mount source code into /workspace
+    volumes:
+      - .:/workspace
+    ports:
+      - "1111:1111"
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      target: dev
+    # Mount source code into /workspace
+    volumes:
+      - .:/workspace
+    # Expose the vite development port
+    ports:
+      - "1112:1112"
+    # depends_on:
+    #   - api
