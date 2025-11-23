@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [apiResponse, setApiResponse] = useState(null)
+
+  useEffect(() => {
+    fetch("/api/hello").then((response) => {
+      return response.json()
+    }).then((json) => setApiResponse(json))
+
+  }, [])
 
   return (
     <>
@@ -16,7 +24,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + REACT + 4</h1>
+      <h1 style={{ "color": "green" }}>Vite + REACT</h1 >
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -27,6 +35,9 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
+      </p>
+      <p>
+        {JSON.stringify(apiResponse, null, 2)}
       </p>
     </>
   )

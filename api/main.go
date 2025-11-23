@@ -13,6 +13,7 @@ func main() {
 
 	// Allows ALL origins REMOVE LATER
 	e.Use(middleware.CORS())
+	e.Use(middleware.Logger())
 
 	// Define the /api/hello route
 	e.GET("/api/hello", func(c echo.Context) error {

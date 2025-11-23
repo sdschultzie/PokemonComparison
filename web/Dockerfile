@@ -4,7 +4,7 @@
 FROM node:25 AS dev
 
 # VS Code mounts source code to /workspaces by default when opening in devcontainer
-WORKDIR /workspaces
+# WORKDIR /workspaces
 
 # Install common dev tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
