@@ -37,7 +37,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <p>
-        {JSON.stringify(apiResponse, null, 2)}
+        GO API RESPONSE: {JSON.stringify(apiResponse, null, 2)}
       </p>
     </>
   )

@@ -5,13 +5,14 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    // Proxy requests made to /api to the backend api service
+    // Proxy requests made to /api to the backend api service when the development server
     proxy: {
       '/api': {
         target: 'http://api:1111',
         changeOrigin: true
       }
     },
+    // Enable hot module replacement (HMR) when code changes
     watch: {
       usePolling: true
     },

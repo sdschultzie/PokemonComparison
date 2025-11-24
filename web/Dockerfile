@@ -3,9 +3,6 @@
 # --------------------------------------
 FROM node:25 AS dev
 
-# VS Code mounts source code to /workspaces by default when opening in devcontainer
-# WORKDIR /workspaces
-
 # Install common dev tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
         bash \
@@ -36,12 +33,10 @@ WORKDIR /app
 # Copy source code
 COPY . .
 
-WORKDIR /app/pokemon-comparison
+# Install necessary packages (ci = clean install)
+RUN npm ci
 
-# Copy package metadata first for dependency caching
-RUN npm install
-
-# # Build the React/Vite app for production
+# Build the React/Vite app for production.
 RUN npm run build
 
 
@@ -51,7 +46,7 @@ RUN npm run build
 FROM nginx:1.27-alpine AS run
 
 # Copy the production build from the build stage
-COPY --from=builder /app/pokemon-comparison/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Optional: add a custom nginx config (if you need API proxying or routing)
 COPY nginx.conf /etc/nginx/conf.d/default.conf

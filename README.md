@@ -2,20 +2,26 @@
 A fullstack web application that allows users to compare and contrast their favorite Pokemon
 
 ## Get Started Developing
-1. clone project
 
-# Run the react web application
+### Prerequisites
+- Docker Installed
+- VS Code Installed
+  - VS Code Dev Container Extension Installed
+- Clone the source code
+
+### Run the react web application
+1. start docker
 2. open current folder in dev container
 3. select the react app container
 4. cd into pokemon-comparison
 5. run `npm run dev`
 
-# Run the golang api
+### Run the golang api
 6. open a new window in vscode
 7. select the go api
 8. run `go run main.go`
 
-# View app
+### View app
 9. go to localhost:1112 to see the web app, make sure the api response is showing
 this means that the react container can send requests to the go api and everything is connected and working
 
