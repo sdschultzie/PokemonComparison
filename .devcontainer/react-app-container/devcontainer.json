@@ -1,5 +1,5 @@
 {
-    "name": "React App DevContainer",
+    "name": "React App devcontainer",
     "dockerComposeFile": [
         "../../docker-compose-dev.yml"
     ],
