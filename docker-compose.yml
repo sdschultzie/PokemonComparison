@@ -1,0 +1,16 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      target: run
+    ports:
+      - "1111:1111"
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      target: run
+    ports:
+      - "80:80"

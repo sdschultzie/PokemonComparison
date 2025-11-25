@@ -1,0 +1,19 @@
+{
+    "name": "React App devcontainer",
+    "dockerComposeFile": [
+        "../../docker-compose-dev.yml"
+    ],
+    "service": "web",
+    "forwardPorts": [
+        1112
+    ],
+    "workspaceFolder": "/workspace/web",
+    "remoteUser": "root",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.go"
+            ]
+        }
+    }
+}
