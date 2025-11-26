@@ -44,9 +44,9 @@ function App() {
       <p>
         <Button>Primary Button</Button>
         <Button variant="secondary">Secondary Button</Button>
-        <Button className='bg-blue-300 text-gray-700 rounded-none'>Button with custom style</Button>
+        <Button className='bg-blue-300 text-gray-700 rounded-none font-bold'>Button with custom style</Button>
       </p>
-    </ThemeProvider>
+    </ThemeProvider >
   )
 }
 
