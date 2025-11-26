@@ -42,8 +42,9 @@ function App() {
         GO API RESPONSE: {JSON.stringify(apiResponse, null, 2)}
       </p>
       <p>
-        <Button>Button component</Button>
-        <Button variant="secondary">Secondary button</Button>
+        <Button>Primary Button</Button>
+        <Button variant="secondary">Secondary Button</Button>
+        <Button className='bg-blue-300 text-gray-700 rounded-none'>Button with custom style</Button>
       </p>
     </ThemeProvider>
   )
